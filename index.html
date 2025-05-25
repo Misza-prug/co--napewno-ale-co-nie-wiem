@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Mother's Day</title>
+  <title>Dzień Matki</title>
   <style>
     body {
       margin: 0;
@@ -14,37 +14,62 @@
 
     .card {
       position: absolute;
-      top: 50%;
+      top: 60%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(1);
       background: white;
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       padding: 40px;
       text-align: center;
-      max-width: 400px;
+      max-width: 450px;
       z-index: 10;
+      animation: slideIn 2s ease-out forwards;
     }
 
     .card h1 {
-      font-size: 2.5em;
+      font-size: 2.7em;
       color: #e60073;
       margin-bottom: 20px;
+      animation: fadeIn 2s ease-in;
     }
 
     .card p {
-      font-size: 1.2em;
+      font-size: 1.3em;
       color: #444;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translate(-50%, 100%) scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+
+    .heart {
+      font-size: 2em;
+      color: #e60073;
+      animation: pulse 1.5s infinite;
+      margin-top: 15px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.6; }
     }
 
     .flower {
       position: fixed;
-      top: -50px;
+      top: -60px;
       width: 40px;
       height: 40px;
       background-size: cover;
       pointer-events: none;
-      animation: fall linear infinite;
+      animation: fall linear forwards, sway ease-in-out infinite alternate;
     }
 
     @keyframes fall {
@@ -53,13 +78,19 @@
         opacity: 0;
       }
     }
+
+    @keyframes sway {
+      0% { transform: translateX(0px); }
+      100% { transform: translateX(30px); }
+    }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <h1>Happy Mother's Day!</h1>
-    <p>Dziękuję Ci Mamo za wszystko. Kocham Cię z całego serca! 💖</p>
+    <h1>Wszystkiego najlepszego z okazji Dnia Matki!</h1>
+    <p>Dziękuję Ci, Mamo, za Twoją miłość, opiekę i ciepło. Jesteś najwspanialsza! 🌷</p>
+    <div class="heart">❤️</div>
   </div>
 
   <script>
@@ -73,17 +104,19 @@
       const flower = document.createElement('div');
       flower.classList.add('flower');
       flower.style.left = Math.random() * 100 + 'vw';
-      flower.style.animationDuration = (5 + Math.random() * 5) + 's';
+      const size = 30 + Math.random() * 30;
+      flower.style.width = size + 'px';
+      flower.style.height = size + 'px';
       flower.style.opacity = Math.random();
+      flower.style.animationDuration = (6 + Math.random() * 4) + 's, 3s';
+      flower.style.animationDelay = '0s, ' + (Math.random() * 2) + 's';
       flower.style.backgroundImage = `url(${flowerImages[Math.floor(Math.random() * flowerImages.length)]})`;
-      document.body.appendChild(flower);
 
-      setTimeout(() => {
-        flower.remove();
-      }, 10000);
+      document.body.appendChild(flower);
+      setTimeout(() => flower.remove(), 12000);
     }
 
-    setInterval(createFlower, 300);
+    setInterval(createFlower, 250);
   </script>
 
 </body>
