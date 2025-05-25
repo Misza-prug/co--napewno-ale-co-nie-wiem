@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Dzień Matki</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartka na Dzień Matki</title>
+    <link rel="stylesheet" href="styles.css">
+    <button onclick="downloadCard()" class="btn">Pobierz kartkę</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-
-  <!-- Muzyka -->
   <audio autoplay loop>
-    <source src="muzyka.mp3" type="audio/mpeg">
-    Twoja przeglądarka nie obsługuje odtwarzania audio.
-  </audio>
-
-  <!-- Kartka -->
-  <div id="card-content" class="card">
-    <h1>Wszystkiego najlepszego z okazji Dnia Matki!</h1>
-    <p>Dziękuję Ci, Mamo, za Twoją miłość, opiekę i ciepło. Jesteś najwspanialsza! 🌷</p>
-    <div class="heart">❤️</div>
-    <button class="download-btn" onclick="downloadCard()">Pobierz kartkę</button>
-  </div>
-
-  <!-- Biblioteka do zrzutu ekranu -->
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-  <script src="script.js"></script>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/16/audio_f1ce6501a0.mp3" type="audio/mp3">
+  Twoja przeglądarka nie obsługuje odtwarzacza audio.
+</audio>
+<div class="card">
+        <div class="card-image"></div>
+        <div class="card-content">
+            <h2>Happy Mother's Day 💐 ❤️</h2>
+            <p>Kochana Mamo, dziękuję za Twoją miłość i wsparcie!</p>
+            <button id="actionBtn" class="btn">Wyślij miłość!</button>
+            <!-- Kontener na serduszka -->
+            <div class="hearts"></div>
+          </div>
+        <div class="hearts"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
-

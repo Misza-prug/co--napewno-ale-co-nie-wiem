@@ -1,35 +1,40 @@
+const button = document.getElementById('actionBtn');
+const heartsContainer = document.querySelector('.hearts');
 
-const flowerImages = [
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Cherry_blossoms_in_Kagoshima_001.jpg/50px-Cherry_blossoms_in_Kagoshima_001.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/White_Daisy.JPG/50px-White_Daisy.JPG',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Pink_rose_flower.jpg/50px-Pink_rose_flower.jpg'
-];
+// Funkcja do tworzenia serduszka
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = `${Math.random() * 100}%`;
+    heartsContainer.appendChild(heart);
 
-function createFlower() {
-  const flower = document.createElement('div');
-  flower.classList.add('flower');
-  flower.style.left = Math.random() * 100 + 'vw';
-  const size = 30 + Math.random() * 30;
-  flower.style.width = size + 'px';
-  flower.style.height = size + 'px';
-  flower.style.opacity = Math.random();
-  flower.style.animationDuration = (6 + Math.random() * 4) + 's, 3s';
-  flower.style.animationDelay = '0s, ' + (Math.random() * 2) + 's';
-  flower.style.backgroundImage = `url(${flowerImages[Math.floor(Math.random() * flowerImages.length)]})`;
-
-  document.body.appendChild(flower);
-  setTimeout(() => flower.remove(), 12000);
+    // Usuń serduszko po zakończeniu animacji
+    setTimeout(() => {
+        heart.remove();
+    }, 4000);
 }
 
-setInterval(createFlower, 250);
+// Obsługa kliknięcia przycisku
+button.addEventListener('click', () => {
+    // Zmiana tekstu przycisku
+    button.textContent = button.textContent === 'Wyślij miłość!' ? 'Wysłano!' : 'Wyślij miłość!';
 
+    // Efekt kliknięcia
+    button.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        button.style.transform = 'scale(1)';
+    }, 100);
+
+    // Stwórz 3 serduszka
+    for (let i = 0; i < 3; i++) {
+        setTimeout(createHeart, i * 200);
+    }
+});
 function downloadCard() {
-  const card = document.getElementById('card-content');
-  html2canvas(card).then(canvas => {
-    const link = document.createElement('a');
-    link.download = 'kartka_dzien_matki.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  });
+    html2canvas(document.querySelector('.card')).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'kartka_dla_mamy.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
 }
-
