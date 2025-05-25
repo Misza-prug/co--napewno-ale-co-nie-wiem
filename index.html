@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Mother's Day</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      padding: 40px;
+      text-align: center;
+      max-width: 400px;
+      z-index: 10;
+    }
+
+    .card h1 {
+      font-size: 2.5em;
+      color: #e60073;
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      font-size: 1.2em;
+      color: #444;
+    }
+
+    .flower {
+      position: fixed;
+      top: -50px;
+      width: 40px;
+      height: 40px;
+      background-size: cover;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Happy Mother's Day!</h1>
+    <p>Dziękuję Ci Mamo za wszystko. Kocham Cię z całego serca! 💖</p>
+  </div>
+
+  <script>
+    const flowerImages = [
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Cherry_blossoms_in_Kagoshima_001.jpg/50px-Cherry_blossoms_in_Kagoshima_001.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/White_Daisy.JPG/50px-White_Daisy.JPG',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Pink_rose_flower.jpg/50px-Pink_rose_flower.jpg'
+    ];
+
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.classList.add('flower');
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.animationDuration = (5 + Math.random() * 5) + 's';
+      flower.style.opacity = Math.random();
+      flower.style.backgroundImage = `url(${flowerImages[Math.floor(Math.random() * flowerImages.length)]})`;
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 10000);
+    }
+
+    setInterval(createFlower, 300);
+  </script>
+
+</body>
+</html>
