@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
   <title>Dzień Matki</title>
@@ -39,22 +39,32 @@
       color: #444;
     }
 
-    @keyframes slideIn {
-      from {
-        transform: translate(-50%, 100%) scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-      }
-    }
-
     .heart {
       font-size: 2em;
       color: #e60073;
       animation: pulse 1.5s infinite;
       margin-top: 15px;
+    }
+
+    .download-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #e60073;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .download-btn:hover {
+      background: #cc005f;
+    }
+
+    @keyframes slideIn {
+      from { transform: translate(-50%, 100%) scale(0.8); opacity: 0; }
+      to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     }
 
     @keyframes pulse {
@@ -87,12 +97,22 @@
 </head>
 <body>
 
-  <div class="card">
+  <!-- Muzyka -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2023/03/26/audio_8f3f43d679.mp3" type="audio/mpeg">
+    Twoja przeglądarka nie obsługuje odtwarzania audio.
+  </audio>
+
+  <!-- Kartka -->
+  <div id="card-content" class="card">
     <h1>Wszystkiego najlepszego z okazji Dnia Matki!</h1>
     <p>Dziękuję Ci, Mamo, za Twoją miłość, opiekę i ciepło. Jesteś najwspanialsza! 🌷</p>
     <div class="heart">❤️</div>
+    <button class="download-btn" onclick="downloadCard()">Pobierz kartkę</button>
   </div>
 
+  <!-- JavaScript -->
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <script>
     const flowerImages = [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Cherry_blossoms_in_Kagoshima_001.jpg/50px-Cherry_blossoms_in_Kagoshima_001.jpg',
@@ -117,6 +137,17 @@
     }
 
     setInterval(createFlower, 250);
+
+    // Pobieranie kartki jako obrazek
+    function downloadCard() {
+      const card = document.getElementById('card-content');
+      html2canvas(card).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'kartka_dzien_matki.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    }
   </script>
 
 </body>
