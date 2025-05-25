@@ -1,106 +1,27 @@
- body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #fce4ec, #f8bbd0, #e91e63);
-      overflow: hidden;
-      font-family: 'Georgia', serif;
-    }
+body {
+  background: #ffe6f0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  padding: 50px;
+  color: #c71585;
+}
 
-    .card {
-      width: 700px;
-      height: 900px;
-      background: #fff;
-      border-radius: 40px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      padding: 40px;
-      text-align: center;
-      border: 3px solid #ff80ab;
-      background: linear-gradient(180deg, #fff, #ffebee);
-    }
+h1 {
+  font-size: 3em;
+  margin-bottom: 0.3em;
+}
 
-    .heart {
-      width: 200px;
-      height: 200px;
-      background: #e91e63;
-      position: relative;
-      transform: rotate(-45deg);
-      margin-bottom: 40px;
-      animation: pulse 2.5s ease-in-out infinite;
-      filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
-    }
+button {
+  background-color: #c71585;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 20px;
+}
 
-    .heart:before,
-    .heart:after {
-      content: '';
-      width: 200px;
-      height: 200px;
-      background: #e91e63;
-      border-radius: 50%;
-      position: absolute;
-    }
-
-    .heart:before {
-      top: -100px;
-      left: 0;
-    }
-
-    .heart:after {
-      left: 100px;
-      top: 0;
-    }
-    h1 {
-      color: #c2185b;
-      font-size: 4em;
-      margin: 20px 0;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      animation: fadeIn 2s ease-in;
-    }
-
-    p {
-      color: #444;
-      font-size: 2em;
-      line-height: 1.6;
-      margin: 0 40px;
-      animation: fadeIn 3s ease-in;
-    }
-
-    .flower {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background: url('https://img.icons8.com/emoji/48/000000/rose.png') no-repeat center;
-      background-size: contain;
-      opacity: 0.9;
-      pointer-events: none;
-      animation: fall linear;
-    }
-    @keyframes fall {
-      0% {
-        transform: translateY(-150px) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(1000px) rotate(720deg);
-        opacity: 0;
-      }
-    }
-    @keyframes pulse {
-      0% {
-        transform: rotate(-45deg) scale(1);
-      }
-      50% {
-        transform: rotate(-45deg) scale(1.15);
-      }
-      100% {
-        transform: rotate(-45deg) scale(1);
-      }
-    }
+button:hover {
+  background-color: #a0146b;
+}
